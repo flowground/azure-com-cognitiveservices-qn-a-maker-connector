@@ -1,0 +1,9 @@
+{
+    "type": "object",
+    "properties": {
+        "keyType": {
+            "required": true,
+            "type": "string"
+        }
+    }
+}

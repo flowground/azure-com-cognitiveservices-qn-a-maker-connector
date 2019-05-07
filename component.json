@@ -1,0 +1,247 @@
+{
+    "title": "QnAMaker Client",
+    "description": "An API for QnAMaker Service",
+    "docsUrl": "",
+    "url": "https://api.apis.guru/v2/specs/azure.com/cognitiveservices-QnAMaker/4.0/swagger.json",
+    "envVars": {},
+    "credentials": {
+        "fields": {
+            "server": {
+                "label": "Server",
+                "viewClass": "SelectView",
+                "model": [
+                    "https://azure.local/",
+                    "{Endpoint}/qnamaker/v4.0",
+                    "--- Custom URL"
+                ],
+                "required": true
+            },
+            "otherServer": {
+                "label": "Custom Server URL",
+                "viewClass": "TextFieldView"
+            },
+            "apim_key": {
+                "label": "Ocp-Apim-Subscription-Key (apim_key)",
+                "viewClass": "TextFieldView"
+            }
+        }
+    },
+    "triggers": {
+        "startFlow": {
+            "main": "./lib/triggers/startFlow.js",
+            "type": "polling",
+            "title": "Start Flow",
+            "fields": {}
+        }
+    },
+    "actions": {
+        "Alterations_Get": {
+            "main": "./lib/actions/Alterations_Get.js",
+            "title": "Download alterations from runtime.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/Alterations_Get.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "Alterations_Replace": {
+            "main": "./lib/actions/Alterations_Replace.js",
+            "title": "Replace alterations data.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/Alterations_Replace.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "EndpointKeys_GetKeys": {
+            "main": "./lib/actions/EndpointKeys_GetKeys.js",
+            "title": "Gets endpoint keys for an endpoint",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/EndpointKeys_GetKeys.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "EndpointKeys_RefreshKeys": {
+            "main": "./lib/actions/EndpointKeys_RefreshKeys.js",
+            "title": "Re-generates an endpoint key.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/EndpointKeys_RefreshKeys.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "Knowledgebase_ListAll": {
+            "main": "./lib/actions/Knowledgebase_ListAll.js",
+            "title": "Gets all knowledgebases for a user.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/Knowledgebase_ListAll.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "Knowledgebase_Create": {
+            "main": "./lib/actions/Knowledgebase_Create.js",
+            "title": "Asynchronous operation to create a new knowledgebase.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/Knowledgebase_Create.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "Knowledgebase_Delete": {
+            "main": "./lib/actions/Knowledgebase_Delete.js",
+            "title": "Deletes the knowledgebase and all its data.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/Knowledgebase_Delete.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "Knowledgebase_GetDetails": {
+            "main": "./lib/actions/Knowledgebase_GetDetails.js",
+            "title": "Gets details of a specific knowledgebase.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/Knowledgebase_GetDetails.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "Knowledgebase_Update": {
+            "main": "./lib/actions/Knowledgebase_Update.js",
+            "title": "Asynchronous operation to modify a knowledgebase.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/Knowledgebase_Update.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "Knowledgebase_Publish": {
+            "main": "./lib/actions/Knowledgebase_Publish.js",
+            "title": "Publishes all changes in test index of a knowledgebase to its prod index.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/Knowledgebase_Publish.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "Knowledgebase_Replace": {
+            "main": "./lib/actions/Knowledgebase_Replace.js",
+            "title": "Replace knowledgebase contents.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/Knowledgebase_Replace.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "Knowledgebase_Download": {
+            "main": "./lib/actions/Knowledgebase_Download.js",
+            "title": "Download the knowledgebase.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/Knowledgebase_Download.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "Operations_GetDetails": {
+            "main": "./lib/actions/Operations_GetDetails.js",
+            "title": "Gets details of a specific long running operation.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/Operations_GetDetails.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        }
+    }
+}

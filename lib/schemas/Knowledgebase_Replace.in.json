@@ -1,0 +1,87 @@
+{
+    "type": "object",
+    "properties": {
+        "kbId": {
+            "required": true,
+            "type": "string"
+        },
+        "requestBody": {
+            "additionalProperties": false,
+            "description": "Post body schema for Replace KB operation.",
+            "properties": {
+                "qnAList": {
+                    "description": "List of Q-A (QnADTO) to be added to the knowledgebase. Q-A Ids are assigned by the service and should be omitted.",
+                    "items": {
+                        "additionalProperties": false,
+                        "description": "Q-A object.",
+                        "properties": {
+                            "answer": {
+                                "description": "Answer text",
+                                "maxLength": 25000,
+                                "minLength": 1,
+                                "type": "string"
+                            },
+                            "id": {
+                                "description": "Unique id for the Q-A.",
+                                "format": "int32",
+                                "type": "integer"
+                            },
+                            "metadata": {
+                                "description": "List of metadata associated with the answer.",
+                                "items": {
+                                    "additionalProperties": false,
+                                    "description": "Name - value pair of metadata.",
+                                    "properties": {
+                                        "name": {
+                                            "description": "Metadata name.",
+                                            "maxLength": 100,
+                                            "minLength": 1,
+                                            "type": "string"
+                                        },
+                                        "value": {
+                                            "description": "Metadata value.",
+                                            "maxLength": 500,
+                                            "minLength": 1,
+                                            "type": "string"
+                                        }
+                                    },
+                                    "required": [
+                                        "name",
+                                        "value"
+                                    ],
+                                    "type": "object"
+                                },
+                                "maxLength": 10,
+                                "type": "array"
+                            },
+                            "questions": {
+                                "description": "List of questions associated with the answer.",
+                                "items": {
+                                    "type": "string"
+                                },
+                                "maxLength": 100,
+                                "minLength": 1,
+                                "type": "array"
+                            },
+                            "source": {
+                                "description": "Source from which Q-A was indexed. eg. https://docs.microsoft.com/en-us/azure/cognitive-services/QnAMaker/FAQs",
+                                "maxLength": 300,
+                                "type": "string"
+                            }
+                        },
+                        "required": [
+                            "answer",
+                            "questions"
+                        ],
+                        "type": "object"
+                    },
+                    "type": "array"
+                }
+            },
+            "required": [
+                "qnAList"
+            ],
+            "type": "object"
+        }
+    }
+}

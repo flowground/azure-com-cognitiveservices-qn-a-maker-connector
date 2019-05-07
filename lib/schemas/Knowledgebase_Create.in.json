@@ -1,0 +1,124 @@
+{
+    "type": "object",
+    "properties": {
+        "requestBody": {
+            "additionalProperties": false,
+            "description": "Post body schema for CreateKb operation.",
+            "properties": {
+                "files": {
+                    "description": "List of files from which to Extract Q-A.",
+                    "items": {
+                        "additionalProperties": false,
+                        "description": "DTO to hold details of uploaded files.",
+                        "properties": {
+                            "fileName": {
+                                "description": "File name. Supported file types are \".tsv\", \".pdf\", \".txt\", \".docx\", \".xlsx\".",
+                                "maxLength": 200,
+                                "minLength": 1,
+                                "type": "string"
+                            },
+                            "fileUri": {
+                                "description": "Public URI of the file.",
+                                "type": "string"
+                            }
+                        },
+                        "required": [
+                            "fileName",
+                            "fileUri"
+                        ],
+                        "type": "object"
+                    },
+                    "maxLength": 10,
+                    "type": "array"
+                },
+                "name": {
+                    "description": "Friendly name for the knowledgebase.",
+                    "maxLength": 100,
+                    "minLength": 1,
+                    "type": "string"
+                },
+                "qnaList": {
+                    "description": "List of Q-A (QnADTO) to be added to the knowledgebase. Q-A Ids are assigned by the service and should be omitted.",
+                    "items": {
+                        "additionalProperties": false,
+                        "description": "Q-A object.",
+                        "properties": {
+                            "answer": {
+                                "description": "Answer text",
+                                "maxLength": 25000,
+                                "minLength": 1,
+                                "type": "string"
+                            },
+                            "id": {
+                                "description": "Unique id for the Q-A.",
+                                "format": "int32",
+                                "type": "integer"
+                            },
+                            "metadata": {
+                                "description": "List of metadata associated with the answer.",
+                                "items": {
+                                    "additionalProperties": false,
+                                    "description": "Name - value pair of metadata.",
+                                    "properties": {
+                                        "name": {
+                                            "description": "Metadata name.",
+                                            "maxLength": 100,
+                                            "minLength": 1,
+                                            "type": "string"
+                                        },
+                                        "value": {
+                                            "description": "Metadata value.",
+                                            "maxLength": 500,
+                                            "minLength": 1,
+                                            "type": "string"
+                                        }
+                                    },
+                                    "required": [
+                                        "name",
+                                        "value"
+                                    ],
+                                    "type": "object"
+                                },
+                                "maxLength": 10,
+                                "type": "array"
+                            },
+                            "questions": {
+                                "description": "List of questions associated with the answer.",
+                                "items": {
+                                    "type": "string"
+                                },
+                                "maxLength": 100,
+                                "minLength": 1,
+                                "type": "array"
+                            },
+                            "source": {
+                                "description": "Source from which Q-A was indexed. eg. https://docs.microsoft.com/en-us/azure/cognitive-services/QnAMaker/FAQs",
+                                "maxLength": 300,
+                                "type": "string"
+                            }
+                        },
+                        "required": [
+                            "answer",
+                            "questions"
+                        ],
+                        "type": "object"
+                    },
+                    "maxLength": 1000,
+                    "type": "array"
+                },
+                "urls": {
+                    "description": "List of URLs to be used for extracting Q-A.",
+                    "items": {
+                        "type": "string"
+                    },
+                    "maxLength": 10,
+                    "type": "array"
+                }
+            },
+            "required": [
+                "name"
+            ],
+            "type": "object"
+        }
+    }
+}

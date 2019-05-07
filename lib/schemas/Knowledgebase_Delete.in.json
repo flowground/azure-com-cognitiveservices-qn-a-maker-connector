@@ -1,0 +1,9 @@
+{
+    "type": "object",
+    "properties": {
+        "kbId": {
+            "required": true,
+            "type": "string"
+        }
+    }
+}

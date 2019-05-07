@@ -1,0 +1,17 @@
+{
+    "type": "object",
+    "properties": {
+        "kbId": {
+            "required": true,
+            "type": "string"
+        },
+        "environment": {
+            "required": true,
+            "type": "string",
+            "enum": [
+                "Prod",
+                "Test"
+            ]
+        }
+    }
+}
